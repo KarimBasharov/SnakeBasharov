@@ -21,10 +21,11 @@ namespace SnakeBasharov
 			yOffset++;
 			WriteText("Автор: Карим Башаров", xOffset + 2, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
+			Console.WriteLine(DateTime.Now);
 			Console.WriteLine("Ваш счёт - " + score);
 			Console.Write("Введите ваше имя: ");
 			string name = Console.ReadLine();
-			using (var file = new System.IO.StreamWriter("result.txt", true))
+			using (var file = new System.IO.StreamWriter("results.txt", true))
 			{
 				file.WriteLine("Name - " + name + " & Score - " + score);
 				file.Close();

@@ -15,16 +15,19 @@ namespace SnakeBasharov
 	{
 		static void Main(string[] args)
 		{
+
+			Random rand = new Random();
+			Console.SetCursorPosition(2, 2);
+			ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+			int i = rand.Next(0, colors.Length - 1);
 			Console.SetWindowSize(80, 25);
 
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
-
 			// Отрисовка точек			
 			Point p = new Point(4, 5, '*');
 			Snake snake = new Snake(p, 4, Direction.RIGHT);
 			snake.Draw();
-
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
 			food.Draw();
@@ -35,11 +38,6 @@ namespace SnakeBasharov
 			Sounds sound1 = new Sounds(settings.GetResourceFolder());
 
 			Sounds sound2 = new Sounds(settings.GetResourceFolder());
-
-			//Score score = new Score(settings.GetResorceFolder());
-
-			//Stopwatch stopwatch = new Stopwatch();
-			//stopwatch.Start();
 
 			while (true)
 			{
@@ -72,5 +70,8 @@ namespace SnakeBasharov
 			Console.ReadLine();
 		}
 
+				
+			
+		
 	}
 }

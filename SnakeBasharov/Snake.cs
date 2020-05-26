@@ -10,6 +10,8 @@ namespace SnakeBasharov
 	{
 		Direction direction;
 
+		public int score;
+
 		public Snake(Point tail, int length, Direction _direction)
 		{
 			direction = _direction;
@@ -20,6 +22,8 @@ namespace SnakeBasharov
 				p.Move(i, direction);
 				pList.Add(p);
 			}
+
+			score = 0;
 		}
 
 		public void Move()
@@ -71,6 +75,7 @@ namespace SnakeBasharov
 			{
 				food.sym = head.sym;
 				pList.Add(food);
+				score++;
 				return true;
 
 			}

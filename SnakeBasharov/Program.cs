@@ -6,6 +6,8 @@ using System.Threading;
 using System.Media;
 using WMPLib;
 using System.IO;
+using System.Reflection;
+using SnakeBasharov;
 
 namespace SnakeBasharov
 {
@@ -43,6 +45,8 @@ namespace SnakeBasharov
 			{
 				if (walls.IsHit(snake) || snake.IsHitTail())
 				{
+					sound.Stop();
+					sound2.PlayNo();
 					break;
 				}
 				if (snake.Eat(food))
@@ -63,33 +67,9 @@ namespace SnakeBasharov
 					snake.HandleKey(key.Key);
 				}
 			}
-			sound.Stop();
-			WriteGameOver();
+			SnakeBasharov.GameOver over = new SnakeBasharov.GameOver();
+			over.WriteGameOver(snake.score);
 			Console.ReadLine();
-		}
-
-
-		static void WriteGameOver()
-		{
-			Params settings = new Params();
-			Sounds sound2 = new Sounds(settings.GetResourceFolder());
-			Sounds sound = new Sounds(settings.GetResourceFolder());
-			int xOffset = 25;
-			int yOffset = 8;
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.SetCursorPosition(xOffset, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
-			yOffset++;
-			WriteText("Автор: Карим Башаров", xOffset + 2, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			sound2.PlayNo();
-		}
-
-		static void WriteText(String text, int xOffset, int yOffset)
-		{
-			Console.SetCursorPosition(xOffset, yOffset);
-			Console.WriteLine(text);
 		}
 
 	}

@@ -53,6 +53,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="FoodCreator.cs" />
+    <Compile Include="GameOver.cs" />
     <Compile Include="HorizonallLine.cs" />
     <Compile Include="Params.cs" />
     <Compile Include="Point.cs" />
